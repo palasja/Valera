@@ -224,10 +224,11 @@ header {
 }
 .banner__content {
     display: flex;
-    justify-content: end;
     flex-direction: column;
     width: 465px;
+    padding-top: 290px;
 }
+
     .banner__content h1 {
         font-family: FjallaOne;
         font-size: 31px;
@@ -288,14 +289,28 @@ header {
 .row1__content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
     grid-column-gap: 30px;
 }
     .row1__content section {
         display: grid;
+        display: -ms-grid;
         grid-template-columns: 70px 1fr;
+        -ms-grid-columns: 70px 30px 1fr;
         grid-column-gap: 30px;
     }
+        .row1__content section:nth-child(1) {
+            -ms-grid-column: 1;
+        }
+        .row1__content section:nth-child(2) {
+            -ms-grid-column: 3;
+        }
+        .row1__content section:nth-child(3) {
+            -ms-grid-column: 5;
+        }
 .row1__image_container {
+    -ms-grid-column: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -305,6 +320,9 @@ header {
     font-size: 32px;
     color: #ffffff;
 }
+.row1__text_container {
+    -ms-grid-column: 3;
+}
 .row1__text_container h2 {
     padding-bottom: 25px;
     font-family: FjallaOne;
@@ -313,10 +331,11 @@ header {
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
-.row1__text_container p {
-    line-height: 24px;
-    hyphens: auto;
-}
+    .row1__text_container p {
+        line-height: 24px;
+        hyphens: auto;
+        -ms-hyphens:auto;
+    }
 .more {
     color: #e84c3d;
     white-space: nowrap;
@@ -330,14 +349,19 @@ header {
 .row2__content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
     grid-column-gap: 30px;
     grid-template-areas:
         'title title row2_img '
         'section1 section2 row2_img';
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
+    -ms-grid-rows: auto auto;
 }
 .row2__title {
     grid-area: title;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 1;
 }
     .row2__title h2 {
         font-family: FjallaOne;
@@ -357,9 +381,13 @@ header {
 }
 .row2__section1 {
     grid-area: section1;
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
 }
 .row2__section2 {
     grid-area: section2;
+    -ms-grid-column: 3;
+    -ms-grid-row: 2;
 }
 .row2__content section {
     padding-top: 25px;
@@ -376,6 +404,7 @@ header {
         line-height: 24px;
         padding-bottom: 25px;
         hyphens: auto;
+        -ms-hyphens: auto;
     }
     .row2__content section  .row2__more_btn {
         padding: 12px 16px;
@@ -390,6 +419,9 @@ header {
 .row2__img_container {
     grid-area: row2_img;
     text-align: right;
+    -ms-grid-column: 5;
+    -ms-grid-row:1;
+    -ms-grid-row-span:2;
 }
 .row2__img_container img{
     border-radius: 177px; 
@@ -401,6 +433,8 @@ header {
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 30px;
     border-radius: 5px;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 30px 1fr;
 }
     .row3__content h3 {
         padding-bottom: 30px;
@@ -415,12 +449,16 @@ header {
     display: grid;
     grid-template-columns: 70px 1fr;
     grid-column-gap: 25px;
+    -ms-grid-column: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 70px  25px 1fr;
 }
     .row3__section1 p {
         font-size: 16px;
         line-height: 24px;
         color: #ffffff;
         hyphens: auto;
+        -ms-hyphens: auto;
     }
         .row3__section1 p span {
             font-size: 14px;
@@ -437,12 +475,19 @@ header {
     justify-content: center;
     align-items: center;
     font-size: 32px;
+    -ms-grid-column: 1;
+}
+.row3__text_container{
+    -ms-grid-column: 3;
+}
+.row3__section2 {
+    -ms-grid-column: 3;
 }
 .row3__section2 input {
     width: 380px;
     height: 40px;
     padding-left: 20px;
-    margin-right:8px;
+    margin-right: 8px;
     background-color: #ffffff;
     border-radius: 20px;
     border: none;
@@ -467,6 +512,8 @@ header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 30px;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
 }
         .row4__content h2 {
         padding-bottom: 30px;
@@ -488,27 +535,51 @@ header {
     padding: 30px 0;
     grid-template-columns: 70px 1fr;
     grid-column-gap: 30px;
-    border-top: 1 solid #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+    display: -ms-grid;
+    -ms-grid-columns: 70px 30px 1fr;
 }
         .row4__section img {
             border-radius: 35px;
             width: 100%;
             height: 100%;
+            -ms-grid-column: 1;
         }
+.row4__section1 {
+    -ms-grid-column: 1;
+}
+.row4__section1 section:nth-child(1) {
+    -ms-grid-row: 1;
+}
+
+    .row4__section1 section:nth-child(1) {
+        -ms-grid-row: 2;
+    }
+
+    .row4__section1 section:nth-child(1) {
+        -ms-grid-row: 3;
+    }
 .row4__section1 section, .row4__section3 section {
     border: 1px solid #e7e7e7;
     border-left: none;
     border-right: none;
 }
+.row4__text_container {
+    -ms-grid-column: 3;
+}
 .row4__text_container p {
     line-height: 24px;
-    hyphens:auto;
+    hyphens: auto;
+    -ms-hyphens: auto;
 }
 
     .row4__text_container p span {
         line-height: 24px;
         color: #e84c3d;
     }
+.row4__section2 {
+    -ms-grid-column: 3;
+}
 .row4__section2 form {
     background-color: #e7e7e7;
     padding: 35px 30px 30px 30px;
@@ -536,6 +607,11 @@ header {
             line-height: 24px;
             padding-left: 17px;
         }
+.row4__section2 input:-ms-input-placeholder, .row4__section2 textarea:-ms-input-placeholder {
+    font-style: italic;
+    line-height: 24px;
+    padding-left: 17px;
+}
 .row4__section2 button {
     font-family: FjallaOne;
     font-size: 15px;
@@ -553,6 +629,9 @@ header {
                 margin-left: 15px;
                 color: #ffffff;
             }
+.row4__section3 {
+    -ms-grid-column: 5;
+}
 .row4__section3 section {
     padding: 24px 0;
 }
@@ -560,6 +639,9 @@ header {
     grid-template-columns: 30px 1fr;
     grid-gap: 20px;
 }
+    .row4__contact{
+        -ms-grid-columns: 30px 20px 1fr;
+    }
 footer {
     background-color: #202628;
 }
