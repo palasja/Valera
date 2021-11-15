@@ -123,6 +123,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 /* End CSS Reset */
+
+
 @font-face {
     font-family: FjallaOne;
     src: url('fonts/FjallaOne-Regular.ttf');
@@ -162,7 +164,6 @@ h1, h2, h3, h4, h5, h6 {
 body {
     max-width: 1920px;
     margin: 0 auto;
-    display: grid;
     font-family: Lato;
     font-size: 14px;
     color: #767c7e;
@@ -189,7 +190,6 @@ header {
             display: block;
             padding: 35px 20px 33px 20px;
             font-family: FjallaOne;
-            font-size: 14px;
             text-align: center;
             color: #e7e7e7;
             text-decoration: none;
@@ -228,11 +228,6 @@ header {
     padding-top: 290px;
 }
 
-    .banner__content h1 {
-        font-family: FjallaOne;
-        font-size: 31px;
-        color: #fff;
-    }
 .banner__arrows {
     display: flex;
     margin-bottom: 30px;
@@ -257,18 +252,21 @@ header {
 .banner__text {
     padding-bottom: 21px;
     overflow: hidden;
+    font-family: FjallaOne;
+    font-size: 31px;
+    color: #e7e7e7;
     text-transform: uppercase;
     letter-spacing: .08em;
 }
 
     .banner__text:after {
+        position: relative;
         content: "";
         display: inline-block;
         vertical-align: middle;
         width: 100%;
         height: 2px;
         background-color: #e7e7e7;
-        position: relative;
     }
 
 .banner__text:after {
