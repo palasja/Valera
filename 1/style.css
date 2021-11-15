@@ -339,7 +339,6 @@ header {
 }
 
 .row2 {
-    background-color: #fff;
     padding: 80px 0;
 }
 
@@ -511,7 +510,7 @@ header {
          -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
     grid-column-gap: 30px;
 }
-        .row4__content h2 {
+    .row4__content h2 {
         padding-bottom: 30px;
         font-family: FjallaOne;
         font-size: 21px;
@@ -587,13 +586,14 @@ header {
         margin-bottom: 20px;
         border-radius: 20px;
     }
+        .row4__section2 input:first-of-type {
+            margin-top: 30px;
+        }
 .row4__content i {
     font-size: 26px;
     color: #202628;
 }
-.row4__section2 input:first-of-type {
-    margin-top:30px;
-}
+
 
 .row4__section2 textarea {
     margin-bottom: 20px;
