@@ -239,7 +239,8 @@ header {
     font-size: 31px;
     justify-content: center;
     align-items: center;
-    mix-blend-mode: color-dodge;
+    //mix-blend-mode: color-dodge;
+    color: #2d3031;
     background: #ff3333;
 }
 .banner__arrow_right {
