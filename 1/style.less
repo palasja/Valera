@@ -132,6 +132,7 @@ h1, h2, h3, h4, h5, h6 {
 @orange: #e84c3d;
 @gray: #767c7e;
 @arrows: #2d3031;
+@one_row: ~ "(max-width: 1170px)";
 
 .display_grid() {
     display: -ms-grid;
@@ -151,7 +152,10 @@ h1, h2, h3, h4, h5, h6 {
     -ms-justify-content: @value;
     justify-content: @value;
 }
-
+.flex_align(@value) {
+    -ms-align-items:@value;
+    align-items: @value;
+}
 .flex_center() {
     justify-content: center;
     align-items: center;
@@ -187,7 +191,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: @weigt;
     font-style: @style;
 }
-.font_head(@size: 21px, @let_spase: 0.04em) {
+.font_head(@size: 1.5em, @let_spase: 0.04em) {
     font-family: FjallaOne;
     text-transform: uppercase;
     font-size: @size;
@@ -256,10 +260,11 @@ header {
         .flex_justify(space-between);
 
         .header__site_name {
-            padding: 27px 0;
+            .flex_row;
+            .flex_center;
 
             a {
-                .font_head(25px);
+                .font_head(2em);
                 text-align: center;
                 color: @white_text;
                 text-decoration: none;
@@ -269,15 +274,16 @@ header {
         .header__menu {
             ul {
                 .flex_row;
+                .flex_align;
                 padding: 0 10px 0 33px;
-
+                height: 100%;
                 li {
 
 
                     a {
                         display: block;
                         padding: 35px 20px 33px 20px;
-                        .font_head(14px);
+                        .font_head(1em);
                         text-align: center;
                         color: #e7e7e7;
                         text-decoration: none;
@@ -304,14 +310,14 @@ header {
         a {
             padding-bottom: 60px;
             font-family: FjallaOne;
-            font-size: 15px;
+            font-size: 1.07em;
             color: @orange;
         }
 
         .banner__text {
             padding-bottom: 21px;
             overflow: hidden;
-            .font_head(31px, .08em);
+            .font_head(2.2em, .08em);
             color: @white_text;
 
             &:after {
@@ -339,7 +345,7 @@ header {
                 height: 70px;
                 .flex_row;
                 .flex_center;
-                font-size: 31px;
+                font-size: 2.07em;
                 //mix-blend-mode: color-dodge;
                 color: @arrows;
                 background: @orange;
@@ -372,7 +378,7 @@ header {
                 .flex_row;
                 .flex_center;
                 height: 70px;
-                font-size: 32px;
+                font-size: 2.13em;
                 color: @white;
                 border-radius: 35px;
                 background-color: @orange;
@@ -434,7 +440,7 @@ header {
 
             .row2__title_text {
                 padding: 8px 0;
-                font-size: 20px;
+                font-size: 1.3em;
                 line-height: 24px;
                 color: @orange;
                 .border_top_bottom(1px, solid, @white_text);
@@ -444,7 +450,7 @@ header {
         section {
             h3 {
                 padding-bottom: 12px;
-                font-size: 16px;
+                font-size: 1.14em;
                 line-height: 24px;
                 font-family: Lato;
                 font-weight: bold;
@@ -509,13 +515,13 @@ header {
             -ms-grid-column: 1;
 
             p {
-                font-size: 16px;
+                font-size: 1.14em;
                 line-height: 24px;
                 color: @white;
 
                 .hyphnes()
                 span {
-                    font-size: 14px;
+                    font-size: 1em;
                     font-style: italic;
                     line-height: 24px;
                     color: @white;
@@ -528,7 +534,7 @@ header {
                 .flex_center;
                 height: 70px;
                 color: @white;
-                font-size: 32px;
+                font-size: 2.29em;
                 border-radius: 35px;
                 background-color: @black;
             }
@@ -559,7 +565,7 @@ header {
                 width: 120px;
                 height: 40px;
                 color: @white;
-                .font_head(15px);
+                .font_head(1.07em);
                 background-color: @black;
                 border-radius: 20px;
 
@@ -585,7 +591,7 @@ header {
         h4 {
             padding-bottom: 5px;
             font-family: LatoBlack;
-            font-size: 16px;
+            font-size: 1.14em;
             color: @orange;
             line-height: 24px;
         }
@@ -674,7 +680,7 @@ header {
                 height: 40px;
                 .flex_row;
                 .flex_center;
-                .font_head(15px;);
+                .font_head(1.07em);
                 color: @white;
                 background-color: #e84c3d;
                 border-radius: 20px;
@@ -719,7 +725,7 @@ footer {
                     a {
                         display: block;
                         padding-right: 15px;
-                        font-size: 14px;
+                        font-size: 1em;
                         text-align: center;
                         color: @white_text;
                         text-decoration: none;
@@ -749,10 +755,94 @@ footer {
                 width: 44px;
                 margin-left: 10px;
                 color: @white;
-                font-size: 20px;
+                font-size: 1.4em;
                 border-radius: 22px;
                 background-color: @orange;
             }
         }
+    }
+}
+@media @one_row {
+    body {
+        font-size: 12px;
+    }
+    .grid-row {
+        grid-template-columns: minmax(0,305px) 560px minmax(0,305px);
+        padding: 20px 5px;
+    }
+
+    .banner {
+        display: none;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+    }
+    .row1 .row1__content {
+        grid-template-columns: none;
+        grid-row-gap: 10px;
+    }
+
+    .row2__img_container {
+        display: none;
+    }
+
+    .row2 .row2__content {
+        grid-template-columns: none;
+        grid-template-areas: 'title' 'section1' 'section2 ';
+        grid-row-gap: 10px;
+    }
+
+    .row3 .row3__content {
+        grid-template-columns: none;
+        grid-row-gap: 10px;
+    }
+    .row4 .row4__content {
+        grid-template-columns: none;
+        grid-row-gap: 10px;
+        padding: 10px 0;
+    }
+    .row4 .row4__content h4 {
+        text-align: left;
+    }
+    element.style {
+    }
+
+    .row4 .row4__content .row4__section2 input {
+        width: 100%;
+    }
+
+    .row4 .row4__content .row4__section2 textarea {
+        width: 100%;
+        height: 100px;
+    }
+
+    .row3 .row3__content .row3__section2 input {
+        width: 360px;
+    }
+
+    header .header__content .header__site_name {
+        padding: 0;
+    }
+
+
+    header .header__content .header__menu ul li a {
+        padding: 0 10px;
+    }
+
+    footer .footer__content {
+        padding: 20px 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer__desined::after {
+        content: "\A";
+        white-space: pre;
+    }
+
+    .footer__icon_container {
+        padding-top: 7px;
+        justify-content: center;
     }
 }
