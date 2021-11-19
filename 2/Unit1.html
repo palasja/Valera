@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Wallperswide
+    </title>
+    <script>
+        function getSubSum() {
+            let val = document.getElementById("subSum").defaultValue == null ? document.getElementById("subSum").defaultValue : document.getElementById("subSum").value;
+            let arr = "[" + val + "]";
+
+            let max = 0;
+            let res = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] + res < 0) {
+                    res = 0;
+                    continue;
+                }
+                res = res + arr[i];
+                if (res > max) max = res;
+            }
+            alert(max);
+        }
+        function getSubSum() {
+            let val = document.getElementById("subSum").defaultValue == null ? document.getElementById("subSum").defaultValue : document.getElementById("subSum").value;
+            let arr = "[" + val + "]";
+
+            let max = 0;
+            let maxValue = "";
+            let cur = 0;
+            let curValue = "";
+            let previos = MIN_INt_VALU;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > previos) {
+                    cur++;
+                    curValue = arr[i] + ",";
+                    previos = arr[i];
+                } else {
+                    if (cur > max) {
+                        max = cur;
+                        maxValue = curValue; 
+                    }
+                    cur = 0;
+                    curValue = "";
+                    previos = MIN_INt_VALU;
+                }
+                
+            }
+            alert(max);
+        }
+    </script>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <header class="grid-row" >
+    </header>
+    <main>
+        <input id="subSum" value="1, -2, 3, 4, -9, 6"/>
+        <button onclick="getSubSum()">O(n)</button>
+    </main>   
+</body>
+ 
+</html>
