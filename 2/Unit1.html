@@ -4,59 +4,54 @@
     <title>
         Wallperswide
     </title>
-    <script>
-        function getSubSum() {
-            let val = document.getElementById("subSum").defaultValue == null ? document.getElementById("subSum").defaultValue : document.getElementById("subSum").value;
-            let arr = "[" + val + "]";
-
-            let max = 0;
-            let res = 0;
-            for (let i = 0; i < arr.length; i++) {
-                if (arr[i] + res < 0) {
-                    res = 0;
-                    continue;
-                }
-                res = res + arr[i];
-                if (res > max) max = res;
-            }
-            alert(max);
-        }
-        function getSubSum() {
-            let val = document.getElementById("subSum").defaultValue == null ? document.getElementById("subSum").defaultValue : document.getElementById("subSum").value;
-            let arr = "[" + val + "]";
-
-            let max = 0;
-            let maxValue = "";
-            let cur = 0;
-            let curValue = "";
-            let previos = MIN_INt_VALU;
-            for (let i = 0; i < arr.length; i++) {
-                if (arr[i] > previos) {
-                    cur++;
-                    curValue = arr[i] + ",";
-                    previos = arr[i];
-                } else {
-                    if (cur > max) {
-                        max = cur;
-                        maxValue = curValue; 
-                    }
-                    cur = 0;
-                    curValue = "";
-                    previos = MIN_INt_VALU;
-                }
-                
-            }
-            alert(max);
-        }
-    </script>
+    <script src="Unit2.js"></script>
     <meta charset="utf-8" />
 </head>
 <body>
     <header class="grid-row" >
     </header>
     <main>
-        <input id="subSum" value="1, -2, 3, 4, -9, 6"/>
-        <button onclick="getSubSum()">O(n)</button>
+        <section>
+            <input id="subSum" value="1, -2, 3, 4, -9, 6" />
+            <button onclick="ArrayProcessingToolo.getSubSum()">O(n)</button>
+            <button onclick="ArrayProcessingToolo.getMaxSequence()">MaxSequence</button>
+            <button onclick="ArrayProcessingToolo.getMaxElemetn()">MaxElement</button>
+            <button onclick="ArrayProcessingToolo.getMinElemetn()">MinElement</button>
+            <button onclick="ArrayProcessingToolo.getMedian()">Median</button>
+        </section>
+        <section>
+            <input id="date" value="31102011" />
+            <button onclick="DateDisplayFormatter.getEUDate()">DD-MM-YYYY</button>
+            <button onclick="DateDisplayFormatter.getDateFullMonth()">DD-MMName-YYYY</button>
+            <button onclick="DateDisplayFormatter.getDateRegExp()">DD-MM-YYYY, pattern</button>
+            <button onclick="DateDisplayFormatter.getDateRegExpPattern()">DD-MM-YYYY, pattern, patternOut</button>
+        </section>
+        <section>
+            <textarea id="arg" cols="50" rows="2">"It show as work arguments. Arguments are working well!"</textarea>
+            <input id="strMaxLength" type="number" value="" placeholder="Length strings" />
+            <input id="strNumLines" type="number" value="" placeholder="Number of lines" />
+            <label for="char">Char</label>
+            <input type="radio" name="hyphenation" id="char" />
+            <label for="word">Word</label>
+            <input type="radio" name="hyphenation" id="word" />
+            <label for="sentence">Sentence</label>
+            <input type="radio" name="hyphenation" id="sentence" />
+            <label for="without">Without</label>
+            <input type="radio" name="hyphenation" id="without" checked />
+            <button onclick="TextTransform.RunHyphenation()">Transform</button>
+            <p id="outHyphination"></p>
+        </section>
+        <section>
+            <label for="convertValue">Value</label>
+            <input id="convertValue" value="F,F" />
+            <label for="convertBase">Base of number</label>
+            <input id="convertBase" type="number" value="16" />
+            <label for="convertBaseOut">Base of out number</label>
+            <input id="convertBaseOut" type="number" value="8" />
+            <p id="convertResult"></p>
+            <button onclick="BinaryConverter.toDec()">Calc</button>
+
+        </section>
     </main>   
 </body>
  
