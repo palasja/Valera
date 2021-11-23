@@ -168,8 +168,13 @@ let DateDisplayFormatter = {
     getEUDate() {
         let regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
         let val = this.getStr();
-        let date = typeof val == "number" ? new Date(val): new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
+        let date = new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
         alert(date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear());
+    },
+    getEUDateMs() {
+        let val = this.getStr();
+        let date = new Date(Number(val));
+        alert(date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
     },
     getDateFullMonth() {
         let months = [
@@ -187,14 +192,13 @@ let DateDisplayFormatter = {
         ];
         let regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
         let val = this.getStr();
-        let date = typeof val == "number" ? new Date(val) : new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
+        let date = new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
         alert(date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear());
     },
         getStr() {
             let dateElement = document.getElementById("date");
             let str = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
-            let res = Number(str);
-            return res == NaN ? str: res;
+            return str;
     },
     getDateRegExp() {
         let arrStr = this.getStr().split(',');
@@ -265,9 +269,8 @@ let TextTransform = {
         let strNumLines = params.strNumLines || 2;
         let hyphenation = params.hyphenation;
 
-        let workStr = str.substr(0, strMaxLength);
-        workStr = workStr.split(/\n/g).slice(0, strNumLines);
-        workStr = workStr.reduce((res, current) => res + current + "\n", "");
+        let workStr = str.split(/\n/g).slice(0, strNumLines);
+        workStr = workStr.reduce((res, current) => res + current.substr(0, strMaxLength) + "\n", "");
 
         let result = "";
         switch (hyphenation) {
@@ -325,7 +328,7 @@ let BinaryConverter = {
         base = this.getStr("convertBase");
         outBase = this.getStr("convertBaseOut");
         let res = arr.reduce((sum, cur, index) => sum + (this.checkLetter(cur) * Math.pow(base, index)), 0);
-        con(res, outBase);
+        alert(this.con(res, outBase).split("").reverse().join(""));
         //alert(res.toString(outBase));
     },
     checkLetter(val) {
@@ -342,8 +345,48 @@ let BinaryConverter = {
         if (val < base) {
             return val;
         } else {
-            let fullPart = Math.trunc(val / base);
-            return fullPart + "" + this.con(val % base, base);
+            let fullPart = val % base;
+            return fullPart + "" + this.con(Math.trunc(val / base), base);
+        }
+    }
+}
+let StringCalculator = {
+    calc() {
+        let str = this.getStr("stringCalc").trim();
+        let arrStr = str.split(/[+/*-]/g);
+        let arrOpp = str.match(/[+/*-]/g);
+        let func = this.getFunc("+");
+        let cash = 0;
+        let res = 0;
+        let j = 0;
+        if (str.trim().substr(0, 1) == "-") {
+            func = this.getFunc("-");
+            arrStr = arrStr.splice(1);
+            j++;
+        } 
+        for (var i = 0; i < arrStr.length; i++) {
+            res = func(res, +arrStr[i]);
+            func = this.getFunc(arrOpp[j]);
+            j++;
+        }
+        alert(res);
+    },
+    getStr(elId) {
+        let dateElement = document.getElementById(elId);
+        let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+        return val;
+    },
+    getFunc(operation) {
+        switch (operation) {
+            case "+":
+                return (a, b) => { return a + b };
+            case "-":
+                return (a, b) => { return a - b };
+            case "*":
+                return (a, b) => { return a * b };
+            case "/":
+                return (a, b) => { return a / b };
+            default: return NaN;
         }
     }
 }

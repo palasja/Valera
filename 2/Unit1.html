@@ -27,6 +27,7 @@
         <section>
             <input id="date" value="31102011" />
             <button onclick="DateDisplayFormatter.getEUDate()">DD-MM-YYYY</button>
+            <button onclick="DateDisplayFormatter.getEUDateMs()">DD-MM-YYYY from ms</button>
             <button onclick="DateDisplayFormatter.getDateFullMonth()">DD-MMName-YYYY</button>
             <button onclick="DateDisplayFormatter.getDateRegExp()">DD-MM-YYYY, pattern</button>
             <button onclick="DateDisplayFormatter.getDateRegExpPattern()">DD-MM-YYYY, pattern, patternOut</button>
@@ -47,6 +48,10 @@
             <p id="outHyphination"></p>
         </section>
         <section>
+            <input id="stringCalc" value="4+6/2.5*2-100" />
+            <button onclick="StringCalculator.calc()">Calc</button>
+        </section>
+        <section>
             <label for="convertValue">Value</label>
             <input id="convertValue" value="F,F" />
             <label for="convertBase">Base of number</label>
@@ -55,8 +60,8 @@
             <input id="convertBaseOut" type="number" value="8" />
             <p id="convertResult"></p>
             <button onclick="BinaryConverter.toDec()">Calc</button>
-
         </section>
+
     </main>   
 </body>
  
