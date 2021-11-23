@@ -15,6 +15,28 @@ let ArrayProcessingToolo = {
         }
         alert(max);
     },
+    getSubSumSlow() {
+        let arr = this.getArrInt();
+        let maxValue = 0;
+        let curValue = 0;
+        let previos = Number.MIN_VALUE;
+        for (let i = 0; i < arr.length; i++) {
+            curValue = 0;
+            previos = Number.MIN_VALUE;
+            for (let j = i; j < arr.length; j++) {
+                if (+arr[j] + curValue >= 0 && previos < arr[j]) {
+                    curValue = curValue + arr[j];
+                    previos = arr[j];
+                } else {
+                    break;
+                }
+            }
+            if (maxValue < curValue) {
+                maxValue = curValue;
+            }
+        }
+        alert(maxValue);
+    },
     getMaxElemetn() {
         let max = Number.MIN_VALUE;
         let arr = this.getArrInt();
@@ -33,55 +55,44 @@ let ArrayProcessingToolo = {
     },
     getMedian() {
         let arr = this.getArrInt();
-        let more = 0;
-        let less = 0;
-        let equal = 0;
-        let cur = 0;
         let odd = arr.length % 2 == 1 ? true : false;
         let medianValue = null;
-        let minMedianValue = null;
-        let maxMedianValue = null;
         if (odd) {
             let median = Math.ceil(arr.length / 2);
+            medianValue = calcMedian(median - 1, median - 1);
+        } else {
+            let medianMinIndex = Math.ceil(arr.length / 2);
+            let medianMin = calcMedian(medianMinIndex - 1, medianMinIndex);
+            let medianMax = calcMedian(medianMinIndex, medianMinIndex - 1);
+            medianValue = (medianMin + medianMax) / 2;
+        }
+        alert(medianValue);
+        function calcMedian(countLess, countMore) {
+            let more = 0;
+            let less = 0;
+            let equal = 0;
+            let cur = 0;
+            let medianValue = null;
             for (let i = 0; i < arr.length; i++) {
                 cur = arr[i];
+                more = 0;
+                less = 0;
                 for (let j = 0; j < arr.length; j++) {
                     if (i == j) continue;
                     if (arr[j] < cur) less++;
                     if (arr[j] > cur) more++;
                     if (arr[j] == cur) equal++;
-                    if (less > median || median < more) break;
+                    if (less > countLess || countMore < more) break;
                 }
 
-                if ((Math.abs(more - less) <= equal) || (median - 1 == more && less == median - 1)) {
+                if ((Math.abs(more - less) <= equal) || (countMore == more && less == countLess)) {
                     medianValue = cur;
                     break;
                 }
-                more = 0;
-                less = 0;
-            }
-            alert(medianValue);
-        } else {
-            let minMedian = Math.ceil(arr.length / 2);
-            for (let i = 0; i < arr.length; i++) {
-                cur = arr[i];
-                for (let j = 0; j < arr.length; j++) {
-                    if (i == j) continue;
-                    if (arr[j] < cur) less++;
-                    if (arr[j] > cur) more++;
-                    if (arr[j] == cur) equal++;
-                }
 
-                if ((Math.abs(more - less) <= equal) || (minMedian - 1 == less && more == minMedian)) {
-                    minMedianValue = cur;
-                }
-                if ((Math.abs(more - less) <= equal) || (minMedian == less && more == minMedian - 1)) {
-                    maxMedianValue = cur;
-                }
-                more = 0;
-                less = 0;
             }
-            alert((minMedianValue + maxMedianValue) / 2);
+            return medianValue;
+        };
     },
     getMaxSequence()  {
         let arr = this.getArrInt();
