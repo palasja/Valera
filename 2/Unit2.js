@@ -82,8 +82,6 @@ let ArrayProcessingToolo = {
                 less = 0;
             }
             alert((minMedianValue + maxMedianValue) / 2);
-        }
-
     },
     getMaxSequence()  {
         let arr = this.getArrInt();
@@ -116,8 +114,8 @@ let ArrayProcessingToolo = {
 let DateDisplayFormatter = {
     getEUDate() {
         let regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
-        let str = this.getStr();
-        let date = new Date(str.replace(regexp, '$<year>-$<month>-$<day>'));
+        let val = this.getStr();
+        let date = typeof val == "number" ? new Date(val): new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
         alert(date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear());
     },
     getDateFullMonth() {
@@ -135,24 +133,25 @@ let DateDisplayFormatter = {
             "December"
         ];
         let regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
-        let str = this.getStr();
-        let date = new Date(str.replace(regexp, '$<year>-$<month>-$<day>'));
+        let val = this.getStr();
+        let date = typeof val == "number" ? new Date(val) : new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
         alert(date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear());
     },
         getStr() {
             let dateElement = document.getElementById("date");
-            let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
-            return val;
+            let str = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+            let res = Number(str);
+            return res == NaN ? str: res;
     },
     getDateRegExp() {
-        let str = this.getStr().split(',');
-        if (str.length == 1) {
+        let arrStr = this.getStr().split(',');
+        if (arrStr.length == 1) {
             this.getEUDate();
             return;
         }
-        let strDate = str[0].trim();
-        let pattern = str[1].trim();
-        let date = new Date(
+        let strDate = arrStr[0].trim();
+        let pattern = arrStr[1].trim();
+         let date = new Date(
             strDate.substr(pattern.search(/Y/), pattern.match(/Y/g).length),
             strDate.substr(pattern.search(/M/), pattern.match(/M/g).length),
             strDate.substr(pattern.search(/D/), pattern.match(/D/g).length),
@@ -273,7 +272,8 @@ let BinaryConverter = {
         base = this.getStr("convertBase");
         outBase = this.getStr("convertBaseOut");
         let res = arr.reduce((sum, cur, index) => sum + (this.checkLetter(cur) * Math.pow(base, index)), 0);
-        alert(res.toString(outBase));
+        con(res, outBase);
+        //alert(res.toString(outBase));
     },
     checkLetter(val) {
         val = val.toUpperCase();
@@ -284,16 +284,13 @@ let BinaryConverter = {
         let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
         return val;
     },
-  /*   res: "",
-   con(value, base, res) {
+    con(value, base) {
         let val = value;
-        if (val <= 0) {
-            res = res + val % base;
-            return val == 0 ? 0: val;
+        if (val < base) {
+            return val;
         } else {
             let fullPart = Math.trunc(val / base);
-            return res + " " + this.con(fullPart, base);
+            return fullPart + "" + this.con(val % base, base);
         }
-        
-}*/
+    }
 }
