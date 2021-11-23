@@ -1,5 +1,47 @@
 ﻿
+let ArraySorter = {
+    arrBase: [19, -12, 4, 1, -3, 12, 59, 0, 13],
 
+    bubleSort() {
+        let arr = this.arrBase;
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = i+1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    let tmp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+        alert(arr);
+    },
+    fastSort(arr, low, hight) {
+        let j = low;
+        let k = hight;
+        let baseEl = arr[low]
+        while (j<=k) {
+            while (arr[j] < baseEl) {
+                j++;
+            }
+            while (arr[k] > baseEl) {
+                k--;
+            }
+            if (j<=k) {
+                let tmp = arr[j];
+                arr[j] = arr[k];
+                arr[k] = tmp;
+                j++;
+                k--;
+            }
+        }
+        if (low < k) this.fastSort(arr, low, k);
+        if (hight > j) this.fastSort(arr, j, hight);
+    },
+    runFast() {
+        this.fastSort(this.arrBase, 0, this.arrBase.length - 1);
+        alert(this.arrBase);
+    }
+ }
 let ArrayProcessingToolo = {
     getSubSum() {
         let arr = this.getArrInt();
