@@ -1,8 +1,34 @@
 ﻿
 let ArraySorter = {
-    arrBase: [19, -12, 4, 1, -3, 12, 59, 0, 13],
-
-    bubleSort() {
+    sorted(func) {
+        arr = this.getStr("arrSort").split(",");
+        alert(arr.sort(func));
+    },
+    minMax() {
+        this.sorted((a, b) => a - b);
+    },
+    maxMin() {
+        this.sorted((a, b) => b - a);
+    },
+    pow2() {
+        this.sorted((a, b) => Math.pow(a, 2) - Math.pow(b, 2));
+    },
+    odd() {
+        this.sorted((a) => {
+            if (a % 2 == 0) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+            );
+    },
+    getStr(elId) {
+        let dateElement = document.getElementById(elId);
+        let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+        return val;
+    }
+ /*   bubleSort() {
         let arr = this.arrBase;
         for (var i = 0; i < arr.length; i++) {
             for (var j = i+1; j < arr.length; j++) {
@@ -40,7 +66,7 @@ let ArraySorter = {
     runFast() {
         this.fastSort(this.arrBase, 0, this.arrBase.length - 1);
         alert(this.arrBase);
-    }
+    }*/
  }
 let ArrayProcessingToolo = {
     getSubSum() {
@@ -388,5 +414,49 @@ let StringCalculator = {
                 return (a, b) => { return a / b };
             default: return NaN;
         }
+    }
+}
+let CachingCalculator = {
+    cash:{ },
+    calc() {
+        let a = this.getStr("cashCalcA");
+        let b = this.getStr("cashCalcB");
+        let operation = this.getStr("cashCalcOpp");
+        let expresion = a + operation + b;
+        let source = "";
+        let res = 0;
+        if (expresion in this.cash) {
+            source = "cash";
+            res = this.cash[expresion];
+        } else {
+            switch (operation) {
+                case "+":
+                    res = a + b;
+                    break;
+                case "-":
+                    res = a - b;
+                    break;
+                case "*":
+                    res = a * b;
+                    break;
+                case "/":
+                    res = a / b;
+                    break;
+                default: res = NaN;
+            }
+            if (res != NaN) {
+                this.cash[expresion] = res;
+                source = "calculate";
+            } else {
+                alert("Wrong operation!!!");
+            }
+            
+        }
+        alert(expresion + " " + source)
+    },
+    getStr(elId) {
+        let dateElement = document.getElementById(elId);
+        let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+        return val;
     }
 }

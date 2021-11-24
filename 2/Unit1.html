@@ -12,8 +12,11 @@
     </header>
     <main>
         <section>
-            <button onclick="ArraySorter.bubleSort()">Buble</button>
-            <button onclick="ArraySorter.runFast()">Fast</button>
+            <input id="arrSort" value="19, -12, 4, 1, -3, 12, 59, 0, 13" />
+            <button onclick="ArraySorter.minMax()">minMax</button>
+            <button onclick="ArraySorter.maxMin()">maxMin</button>
+            <button onclick="ArraySorter.pow2()">pow2</button>
+            <button onclick="ArraySorter.odd()">odd</button>
         </section>
         <section>
             <input id="subSum" value="1, -2, 3, 4, -9, 6" />
@@ -61,7 +64,12 @@
             <p id="convertResult"></p>
             <button onclick="BinaryConverter.toDec()">Calc</button>
         </section>
-
+        <section>
+            <input id="cashCalcA" type="number" value="12" />
+            <input id="cashCalcB" type="number" value="10" />
+            <input id="cashCalcOpp" value="+" />
+            <button onclick="CachingCalculator.calc()">Calc</button>
+        </section>
     </main>   
 </body>
  
