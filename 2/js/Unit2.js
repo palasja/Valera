@@ -1,5 +1,5 @@
 ﻿
-let ArraySorter = {
+var ArraySorter = {
     sorted(func) {
         arr = this.getStr("arrSort").split(",");
         alert(arr.sort(func));
@@ -24,16 +24,16 @@ let ArraySorter = {
             );
     },
     getStr(elId) {
-        let dateElement = document.getElementById(elId);
-        let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+        var dateElement = document.getElementById(elId);
+        var val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
         return val;
     }
  /*   bubleSort() {
-        let arr = this.arrBase;
+        var arr = this.arrBase;
         for (var i = 0; i < arr.length; i++) {
             for (var j = i+1; j < arr.length; j++) {
                 if (arr[i] > arr[j]) {
-                    let tmp = arr[i];
+                    var tmp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = tmp;
                 }
@@ -42,9 +42,9 @@ let ArraySorter = {
         alert(arr);
     },
     fastSort(arr, low, hight) {
-        let j = low;
-        let k = hight;
-        let baseEl = arr[low]
+        var j = low;
+        var k = hight;
+        var baseEl = arr[low]
         while (j<=k) {
             while (arr[j] < baseEl) {
                 j++;
@@ -53,7 +53,7 @@ let ArraySorter = {
                 k--;
             }
             if (j<=k) {
-                let tmp = arr[j];
+                var tmp = arr[j];
                 arr[j] = arr[k];
                 arr[k] = tmp;
                 j++;
@@ -68,12 +68,12 @@ let ArraySorter = {
         alert(this.arrBase);
     }*/
  }
-let ArrayProcessingToolo = {
+var ArrayProcessingToolo = {
     getSubSum() {
-        let arr = this.getArrInt();
-        let max = 0;
-        let res = 0;
-        for (let i = 0; i < arr.length; i++) {
+        var arr = this.getArrInt();
+        var max = 0;
+        var res = 0;
+        for (var i = 0; i < arr.length; i++) {
             if (+arr[i] + res < 0) {
                 res = 0;
                 continue;
@@ -84,14 +84,14 @@ let ArrayProcessingToolo = {
         alert(max);
     },
     getSubSumSlow() {
-        let arr = this.getArrInt();
-        let maxValue = 0;
-        let curValue = 0;
-        let previos = Number.MIN_VALUE;
-        for (let i = 0; i < arr.length; i++) {
+        var arr = this.getArrInt();
+        var maxValue = 0;
+        var curValue = 0;
+        var previos = Number.MIN_VALUE;
+        for (var i = 0; i < arr.length; i++) {
             curValue = 0;
             previos = Number.MIN_VALUE;
-            for (let j = i; j < arr.length; j++) {
+            for (var j = i; j < arr.length; j++) {
                 if (+arr[j] + curValue >= 0 && previos < arr[j]) {
                     curValue = curValue + arr[j];
                     previos = arr[j];
@@ -106,46 +106,46 @@ let ArrayProcessingToolo = {
         alert(maxValue);
     },
     getMaxElemetn() {
-        let max = Number.MIN_VALUE;
-        let arr = this.getArrInt();
-        for (let i = 0; i < arr.length; i++) {
+        var max = Number.MIN_VALUE;
+        var arr = this.getArrInt();
+        for (var i = 0; i < arr.length; i++) {
             if (arr[i] > max) max = arr[i];
         }
         alert(max);
     },
     getMinElemetn () {
-        let min = Number.MAX_VALUE;
-        let arr = this.getArrInt();
-        for (let i = 0; i < arr.length; i++) {
+        var min = Number.MAX_VALUE;
+        var arr = this.getArrInt();
+        for (var i = 0; i < arr.length; i++) {
             if (arr[i] < min) min = arr[i];
         }
         alert(min);
     },
     getMedian() {
-        let arr = this.getArrInt();
-        let odd = arr.length % 2 == 1 ? true : false;
-        let medianValue = null;
+        var arr = this.getArrInt();
+        var odd = arr.length % 2 == 1 ? true : false;
+        var medianValue = null;
         if (odd) {
-            let median = Math.ceil(arr.length / 2);
+            var median = Math.ceil(arr.length / 2);
             medianValue = calcMedian(median - 1, median - 1);
         } else {
-            let medianMinIndex = Math.ceil(arr.length / 2);
-            let medianMin = calcMedian(medianMinIndex - 1, medianMinIndex);
-            let medianMax = calcMedian(medianMinIndex, medianMinIndex - 1);
+            var medianMinIndex = Math.ceil(arr.length / 2);
+            var medianMin = calcMedian(medianMinIndex - 1, medianMinIndex);
+            var medianMax = calcMedian(medianMinIndex, medianMinIndex - 1);
             medianValue = (medianMin + medianMax) / 2;
         }
         alert(medianValue);
         function calcMedian(countLess, countMore) {
-            let more = 0;
-            let less = 0;
-            let equal = 0;
-            let cur = 0;
-            let medianValue = null;
-            for (let i = 0; i < arr.length; i++) {
+            var more = 0;
+            var less = 0;
+            var equal = 0;
+            var cur = 0;
+            var medianValue = null;
+            for (var i = 0; i < arr.length; i++) {
                 cur = arr[i];
                 more = 0;
                 less = 0;
-                for (let j = 0; j < arr.length; j++) {
+                for (var j = 0; j < arr.length; j++) {
                     if (i == j) continue;
                     if (arr[j] < cur) less++;
                     if (arr[j] > cur) more++;
@@ -163,13 +163,13 @@ let ArrayProcessingToolo = {
         };
     },
     getMaxSequence()  {
-        let arr = this.getArrInt();
-        let max = 0;
-        let maxValue = "";
-        let cur = 0;
-        let curValue = "";
-        let previos = Number.MIN_VALUE;
-        for (let i = 0; i < arr.length; i++) {
+        var arr = this.getArrInt();
+        var max = 0;
+        var maxValue = "";
+        var cur = 0;
+        var curValue = "";
+        var previos = Number.MIN_VALUE;
+        for (var i = 0; i < arr.length; i++) {
             if (arr[i] > previos) {
                 cur++;
                 curValue = curValue + "," + arr[i];
@@ -186,24 +186,24 @@ let ArrayProcessingToolo = {
         alert(maxValue);
     },
     getArrInt(){
-        let val = document.getElementById("subSum").defaultValue == null ? document.getElementById("subSum").defaultValue : document.getElementById("subSum").value;
+        var val = document.getElementById("subSum").defaultValue == null ? document.getElementById("subSum").defaultValue : document.getElementById("subSum").value;
         return val.split(',').map(string => +string);
     }
 }
-let DateDisplayFormatter = {
+var DateDisplayFormatter = {
     getEUDate() {
-        let regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
-        let val = this.getStr();
-        let date = new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
+        var regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
+        var val = this.getStr();
+        var date = new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
         alert(date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear());
     },
     getEUDateMs() {
-        let val = this.getStr();
-        let date = new Date(Number(val));
+        var val = this.getStr();
+        var date = new Date(Number(val));
         alert(date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
     },
     getDateFullMonth() {
-        let months = [
+        var months = [
             "January",
             "February",
             "March", "April",
@@ -216,25 +216,25 @@ let DateDisplayFormatter = {
             "November",
             "December"
         ];
-        let regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
-        let val = this.getStr();
-        let date = new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
+        var regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
+        var val = this.getStr();
+        var date = new Date(val.replace(regexp, '$<year>-$<month>-$<day>'));
         alert(date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear());
     },
         getStr() {
-            let dateElement = document.getElementById("date");
-            let str = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+            var dateElement = document.getElementById("date");
+            var str = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
             return str;
     },
     getDateRegExp() {
-        let arrStr = this.getStr().split(',');
+        var arrStr = this.getStr().split(',');
         if (arrStr.length == 1) {
             this.getEUDate();
             return;
         }
-        let strDate = arrStr[0].trim();
-        let pattern = arrStr[1].trim();
-         let date = new Date(
+        var strDate = arrStr[0].trim();
+        var pattern = arrStr[1].trim();
+         var date = new Date(
             strDate.substr(pattern.search(/Y/), pattern.match(/Y/g).length),
             strDate.substr(pattern.search(/M/), pattern.match(/M/g).length),
             strDate.substr(pattern.search(/D/), pattern.match(/D/g).length),
@@ -242,7 +242,7 @@ let DateDisplayFormatter = {
         alert(date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear());
     },
     getDateRegExpPattern() {
-        let str = this.getStr().split(',');
+        var str = this.getStr().split(',');
         if (str.length == 1) {
             this.getEUDate();
             return;
@@ -251,24 +251,24 @@ let DateDisplayFormatter = {
             this.getDateRegExp();
             return;
         }
-        let strDate = str[0].trim();
-        let pattern = str[1].trim();
-        let patternOut = str[2].trim();
-        let date = new Date(
+        var strDate = str[0].trim();
+        var pattern = str[1].trim();
+        var patternOut = str[2].trim();
+        var date = new Date(
             strDate.substr(pattern.search(/Y/), pattern.match(/Y/g).length),
             strDate.substr(pattern.search(/M/), pattern.match(/M/g).length),
             strDate.substr(pattern.search(/D/), pattern.match(/D/g).length),
         );
-        let outDate = patternOut.replace(/DD/, date.getDate());
+        var outDate = patternOut.replace(/DD/, date.getDate());
         outDate = outDate.replace(/MM/, date.getMonth());
         outDate = outDate.replace(/YYYY/, date.getFullYear());
         alert(outDate);
     },
        //20102011, DDMMYYYY, YYYY-DD-MM
 }
-let TextTransform = {
+var TextTransform = {
     RunHyphenation() {
-        let transform = this.TextFormatter({
+        var transform = this.TextFormatter({
             str: getStr("arg"),
             strMaxLength: getStr("strMaxLength"),
             strNumLines: getStr("strNumLines"),
@@ -277,12 +277,12 @@ let TextTransform = {
         document.getElementById("outHyphination").innerText = transform;
 
         function getStr(elId) {
-            let dateElement = document.getElementById(elId);
-            let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+            var dateElement = document.getElementById(elId);
+            var val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
             return val;
         };
         function getHyphenation() {
-            let radioGroup = document.getElementsByName("hyphenation");
+            var radioGroup = document.getElementsByName("hyphenation");
             for (var i = 0; i < radioGroup.length; i++) {
                 if (radioGroup[i].checked) return radioGroup[i].id;
             }
@@ -290,26 +290,26 @@ let TextTransform = {
     },
 
     TextFormatter(params) {
-        let str = params.str;
-        let strMaxLength = params.strMaxLength || 60;
-        let strNumLines = params.strNumLines || 2;
-        let hyphenation = params.hyphenation;
+        var str = params.str;
+        var strMaxLength = params.strMaxLength || 60;
+        var strNumLines = params.strNumLines || 2;
+        var hyphenation = params.hyphenation;
 
-        let workStr = str.split(/\n/g).slice(0, strNumLines);
+        var workStr = str.split(/\n/g).slice(0, strNumLines);
         workStr = workStr.reduce((res, current) => res + current.substr(0, strMaxLength) + "\n", "");
 
-        let result = "";
+        var result = "";
         switch (hyphenation) {
             case ("char"):
-                let arrChar = workStr.split('');
+                var arrChar = workStr.split('');
                 result = arrChar.reduce((res, current) => res + current + "\n", "")
                 break;
             case ('word'):
-                let arrWord = workStr.split(/ /g);
+                var arrWord = workStr.split(/ /g);
                 result = arrWord.reduce((res, current) => res + current + "\n", "")
                 break;
             case ('sentence'):
-                let arrSentence = workStr.split(/[?!.]/g);
+                var arrSentence = workStr.split(/[?!.]/g);
                 result = arrSentence.reduce((res, current) => res + current + "\n", "")
                 break;
             default:
@@ -319,8 +319,8 @@ let TextTransform = {
         return result;
     }
 }
-let BinaryConverter = {
-    letter: {
+var BinaryConverter = {
+    varter: {
         "A": 10,
         "B": 11,
         "C": 12,
@@ -353,38 +353,38 @@ let BinaryConverter = {
         arr = this.getStr("convertValue").split(",");
         base = this.getStr("convertBase");
         outBase = this.getStr("convertBaseOut");
-        let res = arr.reduce((sum, cur, index) => sum + (this.checkLetter(cur) * Math.pow(base, index)), 0);
+        var res = arr.reduce((sum, cur, index) => sum + (this.checkvarter(cur) * Math.pow(base, index)), 0);
         alert(this.con(res, outBase).split("").reverse().join(""));
         //alert(res.toString(outBase));
     },
-    checkLetter(val) {
+    checkvarter(val) {
         val = val.toUpperCase();
-        return val in this.letter ? this.letter[val] : val;
+        return val in this.varter ? this.varter[val] : val;
     },
     getStr(elId) {
-        let dateElement = document.getElementById(elId);
-        let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+        var dateElement = document.getElementById(elId);
+        var val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
         return val;
     },
     con(value, base) {
-        let val = value;
+        var val = value;
         if (val < base) {
             return val;
         } else {
-            let fullPart = val % base;
+            var fullPart = val % base;
             return fullPart + "" + this.con(Math.trunc(val / base), base);
         }
     }
 }
-let StringCalculator = {
+var StringCalculator = {
     calc() {
-        let str = this.getStr("stringCalc").trim();
-        let arrStr = str.split(/[+/*-]/g);
-        let arrOpp = str.match(/[+/*-]/g);
-        let func = this.getFunc("+");
-        let cash = 0;
-        let res = 0;
-        let j = 0;
+        var str = this.getStr("stringCalc").trim();
+        var arrStr = str.split(/[+/*-]/g);
+        var arrOpp = str.match(/[+/*-]/g);
+        var func = this.getFunc("+");
+        var cash = 0;
+        var res = 0;
+        var j = 0;
         if (str.trim().substr(0, 1) == "-") {
             func = this.getFunc("-");
             arrStr = arrStr.splice(1);
@@ -398,8 +398,8 @@ let StringCalculator = {
         alert(res);
     },
     getStr(elId) {
-        let dateElement = document.getElementById(elId);
-        let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+        var dateElement = document.getElementById(elId);
+        var val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
         return val;
     },
     getFunc(operation) {
@@ -416,15 +416,15 @@ let StringCalculator = {
         }
     }
 }
-let CachingCalculator = {
+var CachingCalculator = {
     cash:{ },
     calc() {
-        let a = this.getStr("cashCalcA");
-        let b = this.getStr("cashCalcB");
-        let operation = this.getStr("cashCalcOpp");
-        let expresion = a + operation + b;
-        let source = "";
-        let res = 0;
+        var a = this.getStr("cashCalcA");
+        var b = this.getStr("cashCalcB");
+        var operation = this.getStr("cashCalcOpp");
+        var expresion = a + operation + b;
+        var source = "";
+        var res = 0;
         if (expresion in this.cash) {
             source = "cash";
             res = this.cash[expresion];
@@ -455,8 +455,8 @@ let CachingCalculator = {
         alert(expresion + " " + source)
     },
     getStr(elId) {
-        let dateElement = document.getElementById(elId);
-        let val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
+        var dateElement = document.getElementById(elId);
+        var val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
         return val;
     }
 }
