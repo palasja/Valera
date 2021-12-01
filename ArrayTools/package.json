@@ -1,0 +1,17 @@
+{
+  "name": "arraytools",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "build-dev": "webpack --mode development -w",
+    "build-prod": "webpack --mode production -w",
+    "start": "index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  },
+  "description": ""
+}
