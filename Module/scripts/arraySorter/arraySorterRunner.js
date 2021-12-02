@@ -1,5 +1,5 @@
-const arraysorter = require('./arraysorter.js');
-const getArrInt = require("./Reader");
+const arraysorter = require('./arraySorter.js');
+const getArrInt = require("../Reader");
 var arr = getArrInt.readNum();
 alert("maxMin: " + arraysorter.maxMin(arr));
 alert("minMax: " + arraysorter.minMax(arr));

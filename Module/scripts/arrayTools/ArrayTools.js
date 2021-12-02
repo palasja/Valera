@@ -1,4 +1,3 @@
-const getArrInt = require("./Reader");
 var ArrayProcessingToolo = (function () {
     let arrayValueProcessor = {};
 

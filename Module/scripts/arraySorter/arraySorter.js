@@ -1,4 +1,3 @@
-
 var arraySorter = (function () {
     let arraySort = {};
     arraySort.minMax = function(arr) {

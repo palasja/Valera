@@ -1,5 +1,5 @@
-const arrayToolsModule = require('./arrayprocessor.js');
-const getArrInt = require("./Reader");
+const arrayToolsModule = require('./arrayTools.js');
+const getArrInt = require("../Reader");
 var arr = getArrInt.readNum();
 alert("MaxSequence: " + arrayToolsModule.getMaxSequence(arr));
 alert("SubSum: " + arrayToolsModule.getSubSum(arr));
