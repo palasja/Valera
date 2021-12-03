@@ -1,3 +1,4 @@
+import { getStr } from "./common.js";
 function getSubSum() {
     var arr = getArrInt();
     var max = 0;
@@ -113,6 +114,9 @@ function getMaxSequence()  {
         previos = arr[i];
     }
     alert(maxValue);
+};
+function getArrInt() {
+    return getStr("subSum").split(',').map(string => +string);
 };
 
 export { getSubSum, getSubSumSlow, getMaxElemetn, getMinElemetn, getMedian, getMaxSequence }; 

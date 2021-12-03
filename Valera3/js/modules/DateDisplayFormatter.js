@@ -1,3 +1,4 @@
+import { getStr } from "./common.js";
 function getEUDate() {
     var regexp = /(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4})/;
     var val = getStr("date");
@@ -13,7 +14,8 @@ function getDateFullMonth() {
     var months = [
         "January",
         "February",
-        "March", "April",
+        "March",
+        "April",
         "May",
         "June",
         "July",

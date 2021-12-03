@@ -4,7 +4,7 @@ function sorted(func) {
     alert(arr.sort(func));
 };
 function minMax() {
-    sorted((a, b) => a - b);
+    new sorted((a, b) => a - b);
 };
 function maxMin() {
     sorted((a, b) => b - a);
