@@ -12,11 +12,18 @@
     </header>
     <main>
         <section>
-            <input id="arrSort" value="19, -12, 4, 1, -3, 12, 59, 0, 13" />
-            <button id="minMax">minMax</button>
-            <button id="maxMin">maxMin</button>
-            <button id="pow2">pow2</button>
-            <button id="odd">odd</button>
+            <form id="sorted" action="#">
+                <input id="arrSort" value="19, -12, 4, 1, -3, 12, 59, 0, 13" />
+                <label for="minMax">minMax</label>
+                <input type="radio" name="sortType" id="minMax" value="minMax"/>
+                <label for="maxMin">maxMin</label>
+                <input type="radio" name="sortType" id="maxMin" value="maxMin"/>
+                <label for="pow2">pow2</label>
+                <input type="radio" name="sortType" id="pow2" value="pow2"/>
+                <label for="odd">odd</label>
+                <input type="radio" name="sortType" id="odd" value="odd"/>
+            </form>
+            
         </section>
 
            <!--

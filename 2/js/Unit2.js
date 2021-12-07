@@ -27,7 +27,7 @@ var ArraySorter = {
         var dateElement = document.getElementById(elId);
         var val = dateElement.defaultValue == null ? dateElement.defaultValue : dateElement.value;
         return val;
-    }
+    },
  /*   bubleSort() {
         var arr = this.arrBase;
         for (var i = 0; i < arr.length; i++) {
@@ -40,7 +40,7 @@ var ArraySorter = {
             }
         }
         alert(arr);
-    },
+    },*/
     fastSort(arr, low, hight) {
         var j = low;
         var k = hight;
@@ -63,10 +63,11 @@ var ArraySorter = {
         if (low < k) this.fastSort(arr, low, k);
         if (hight > j) this.fastSort(arr, j, hight);
     },
-    runFast() {
-        this.fastSort(this.arrBase, 0, this.arrBase.length - 1);
+    odd() {
+        var arr = this.getStr("arrSort").split(",");
+        this.fastSort(arr, 0, arr.length - 1);
         alert(this.arrBase);
-    }*/
+    }
  }
 var ArrayProcessingToolo = {
     getSubSum() {
