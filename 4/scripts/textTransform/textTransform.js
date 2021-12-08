@@ -1,17 +1,18 @@
 
-var textFormatter = (function () {
-    let textFormatter = {};
-    textFormatter.RunHyphenation = function(params) {
-        var str = params.str;
-        var strMaxLength = params.strMaxLength;
-        var strNumLines = params.strNumLines;
-        var hyphenation = params.hyphenation;
+class RunHyphenation {
+    constructor(str, strMaxLength, strNumLines, hyphenation){
+        this.str = str;
+        this.strMaxLength = strMaxLength;
+        this.strNumLines = strNumLines;
+        this.hyphenation = hyphenation;
+    };
+    transform(){
         var arr = [];
         var result = "";
         switch (hyphenation) {
             case ("char"):
                 arr = str.split('');
-                arr = arr.slice(0, strNumLines);
+                arr = arr.slice (0, strNumLines);
                 result = arr.join("\n");
                 break;
             case ("word"):
@@ -32,8 +33,7 @@ var textFormatter = (function () {
                 result = str;
         }
         return result;
-    };
-    return textFormatter;
-}());
+    }
+}
 
 module.exports = textFormatter;
