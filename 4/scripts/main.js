@@ -1,5 +1,6 @@
 import "../style.less"
 const sorter = require('./arraySorter/arraySorter.js');
+const stringCalculator = require('./stringCalculator/stringCalculator.js');
 const reader = require("./Reader.js");
 let testBubel = ""
 var arraysorter = new sorter(reader.readNum("arrSort"));
@@ -7,7 +8,7 @@ var arraysorter = new sorter(reader.readNum("arrSort"));
 let radioGroup = document.getElementsByName("sortType");
 for (var i = 0; i < radioGroup.length; i++) {
     let cur = radioGroup[i];
-    radioGroup[i].addEventListener("change", 
+    cur.addEventListener("change", 
     function(){
         arraysorter.arr = reader.readNum("arrSort");
         arraysorter.sort(cur.id);
@@ -15,20 +16,7 @@ for (var i = 0; i < radioGroup.length; i++) {
     }
     );
 }
-/*
-document.getElementById("minMax").addEventListener("click", 
-function(){
-    arraysorter.minMax(reader.readNum("arrSort"))
-});
-document.getElementById("maxMin").addEventListener("click", 
-function(){
-    arraysorter.maxMin(reader.readNum("arrSort"))
-});
-document.getElementById("pow2").addEventListener("click", 
-function(){
-    arraysorter.pow2(reader.readNum("arrSort"))
-});
-document.getElementById("odd").addEventListener("click", 
-function(){
-    arraysorter.odd(reader.readNum("arrSort"))
-});*/
+let calculator = new stringCalculator();
+document.getElementById("calc").addEventListener("click",() =>{
+    document.getElementById("output").innerHTML = calculator.calc(reader.readStr("stringCalc"));
+})

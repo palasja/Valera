@@ -3,8 +3,8 @@ var Reader = (function(){
     reader.readNum = function(elId){
         return _getStrOnId(elId).split(',').map(function(stringVal){return +stringVal} );
     };
-    reader.readStr = function(message){
-        return prompt(message);
+    reader.readStr = function(elId){
+        return _getStrOnId(elId).trim();
     };
     reader.readPositiveNum = function(message){
         return Number.parseInt(prompt(message));
