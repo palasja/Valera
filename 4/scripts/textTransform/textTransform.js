@@ -1,33 +1,29 @@
 
-class RunHyphenation {
-    constructor(str, strMaxLength, strNumLines, hyphenation){
-        this.str = str;
-        this.strMaxLength = strMaxLength;
-        this.strNumLines = strNumLines;
-        this.hyphenation = hyphenation;
-    };
-    transform(){
+class TextFormatter {
+    transform(str, strMaxLength, strNumLines, hyphenation){
         var arr = [];
+        var arrTmp = [];
         var result = "";
         switch (hyphenation) {
             case ("char"):
                 arr = str.split('');
-                arr = arr.slice (0, strNumLines);
-                result = arr.join("\n");
+                arrTmp = arr.slice (0, strNumLines);
+                result = arrTmp.join("\n");
                 break;
             case ("word"):
                 arr = str.split(/ /g);
-                for(let i=0; i < arr.length || i < strNumLines; i++){
-                    arr[i] = arr[i].substr(0, strMaxLength);
+                for(let i=0; i < arr.length && i < strNumLines; i++){
+                    arrTmp[i] = arr[i].substr(0, strMaxLength);
                 };
-                result = arr.join("\n");
+                result = arrTmp.join("\n");
                 break;
             case ("sentence"):
-                arr = str.split(/\S.*?[\.\?\!](?=\s|$)/g);
-                for(let i=0; i < arr.length || i < strNumLines; i++){
-                    arr[i] = arr[i].substr(0, strMaxLength);
+                //arr = str.split(/\S.*?[\.\?\!](?=\s|$)/g);
+                arr = str.split(/[\.\?\!]/g);
+                for(let i=0; i < arr.length && i < strNumLines; i++){
+                    arrTmp[i] = arr[i].substr(0, strMaxLength);
                 };
-                result = arr.join("\n");
+                result = arrTmp.join("\n");
                 break;
             default:
                 result = str;
@@ -36,4 +32,4 @@ class RunHyphenation {
     }
 }
 
-module.exports = textFormatter;
+module.exports = TextFormatter;

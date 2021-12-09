@@ -6,8 +6,8 @@ var Reader = (function(){
     reader.readStr = function(elId){
         return _getStrOnId(elId).trim();
     };
-    reader.readPositiveNum = function(message){
-        return Number.parseInt(prompt(message));
+    reader.readPositiveNum = function(elId){
+        return Number.parseInt(_getStrOnId(elId));
     };
     reader.readArthSign = function(message){
         let sign = prompt(message);

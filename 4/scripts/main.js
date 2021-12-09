@@ -1,6 +1,7 @@
 import "../style.less"
 const sorter = require('./arraySorter/arraySorter.js');
 const stringCalculator = require('./stringCalculator/stringCalculator.js');
+const transformer = require('./textTransform/textTransform.js');
 const reader = require("./Reader.js");
 let testBubel = ""
 var arraysorter = new sorter(reader.readNum("arrSort"));
@@ -19,4 +20,18 @@ for (var i = 0; i < radioGroup.length; i++) {
 let calculator = new stringCalculator();
 document.getElementById("calc").addEventListener("click",() =>{
     document.getElementById("output").innerHTML = calculator.calc(reader.readStr("stringCalc"));
-})
+});
+
+let textTransform = new transformer();
+let getParams = () =>{
+    let string = reader.readStr("textFormaterStr");
+    let naxLength = reader.readPositiveNum("strMaxLength");
+    let numLines = reader.readPositiveNum("strNumLines");
+    let hyphenation = document.getElementsByName("textFormater")[0].value;
+    document.getElementById("output").innerHTML = textTransform.transform(string, naxLength, numLines, hyphenation);
+}
+document.getElementById("strMaxLength").addEventListener("change", getParams);
+document.getElementById("strNumLines").addEventListener("change", getParams);
+document.getElementById("textFormater").addEventListener("change", getParams);
+document.getElementById("textFormaterStr").addEventListener("focusout", getParams);
+
