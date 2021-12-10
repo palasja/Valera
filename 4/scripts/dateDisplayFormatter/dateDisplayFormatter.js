@@ -36,7 +36,7 @@ class DateFormatter {
         return outDate;
     };
     inOutPattern = function(strDate, pattern, patternOut) {
-        var date = this.getDateRegExp(strDate, pattern);
+        var date = this.inputPattern(strDate, pattern);
         var outDate = patternOut.replace(/DD/, date.getDate());
         outDate = outDate.replace(/MM/, date.getMonth());
         outDate = outDate.replace(/YYYY/, date.getFullYear());

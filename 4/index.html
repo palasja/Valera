@@ -9,8 +9,16 @@
 </head>
 <body>
     <header class="grid-row" >
+        <nav class="nav">
+            <ul class="menu">
+                <li>Date Transform</li>
+                <li>Text Transform</li>
+                <li>String calculator</li>
+                <li>Array sorter</li>
+            </ul>
+        </nav>
     </header>
-    <main>
+    <main class="main">
         <section class="section">
             <input id="date" value="2011-10-21" />
             <input id="inputFormat" placeholder="YYYYMMDD" />
@@ -29,7 +37,6 @@
                 <option value="word" selected>word</option>
                 <option value="char">char</option>
             </select>
-            <button onclick="TextTransform.RunHyphenation()">Transform</button>
         </section>
         <section class="section">
             <input id="stringCalc" value="4+6/2.5*2-100" />
@@ -48,7 +55,7 @@
                 <input type="radio" name="sortType" id="odd" value="odd"/>
             </form>
         </section>
-        <section id="resulcConsole">
+        <section class="resulcConsole">
             <p id="output"></p>
         </section>
     </main>   

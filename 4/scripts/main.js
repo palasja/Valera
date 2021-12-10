@@ -11,14 +11,15 @@ document.getElementById("formatDate").addEventListener("click", function(){
     let strDate = reader.readStr("date");
     let inPatten = reader.readStr("inputFormat");
     let outPattern = reader.readStr("outputFormat");
-    console.log(outPattern.length == 0 &&  inPatten.length != 0);
-    if(outPattern.length != 0 && inPatten.length != 0){
+    console.log(outPattern.length == 0);
+    console.log(inPatten.length == 0);
+    if(outPattern.length == 0 && inPatten.length == 0){
         document.getElementById("output").innerHTML = dateTransformer.setDate(strDate);
-    }else if(outPattern.length == 0 &&  inPatten.length != 0){
-        document.getElementById("output").innerHTML = dateTransformer.outputPattern(strDate, outPattern);
     }else if(outPattern.length != 0 &&  inPatten.length == 0){
+        document.getElementById("output").innerHTML = dateTransformer.outputPattern(strDate, outPattern);
+    }else if(outPattern.length == 0 &&  inPatten.length != 0){
         document.getElementById("output").innerHTML = dateTransformer.inputPattern(strDate, inPatten);
-    }else if(outPattern.length == 0 &&  inPatten.length == 0){
+    }else if(outPattern.length != 0 &&  inPatten.length != 0){
         document.getElementById("output").innerHTML = dateTransformer.inOutPattern(strDate, inPatten, outPattern);
     }
 })
