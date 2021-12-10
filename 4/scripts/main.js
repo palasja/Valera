@@ -1,11 +1,29 @@
 import "../style.less"
 const sorter = require('./arraySorter/arraySorter.js');
 const stringCalculator = require('./stringCalculator/stringCalculator.js');
-const transformer = require('./textTransform/textTransform.js');
+const TextTransformer = require('./textTransform/textTransform.js');
+const DateTransformer = require('./dateDisplayFormatter/dateDisplayFormatter.js');
 const reader = require("./Reader.js");
-let testBubel = ""
-var arraysorter = new sorter(reader.readNum("arrSort"));
+let testBubel = "";
 
+var dateTransformer = new DateTransformer();
+document.getElementById("formatDate").addEventListener("click", function(){
+    let strDate = reader.readStr("date");
+    let inPatten = reader.readStr("inputFormat");
+    let outPattern = reader.readStr("outputFormat");
+    console.log(outPattern.length == 0 &&  inPatten.length != 0);
+    if(outPattern.length != 0 && inPatten.length != 0){
+        document.getElementById("output").innerHTML = dateTransformer.setDate(strDate);
+    }else if(outPattern.length == 0 &&  inPatten.length != 0){
+        document.getElementById("output").innerHTML = dateTransformer.outputPattern(strDate, outPattern);
+    }else if(outPattern.length != 0 &&  inPatten.length == 0){
+        document.getElementById("output").innerHTML = dateTransformer.inputPattern(strDate, inPatten);
+    }else if(outPattern.length == 0 &&  inPatten.length == 0){
+        document.getElementById("output").innerHTML = dateTransformer.inOutPattern(strDate, inPatten, outPattern);
+    }
+})
+
+var arraysorter = new sorter(reader.readNum("arrSort"));
 let radioGroup = document.getElementsByName("sortType");
 for (var i = 0; i < radioGroup.length; i++) {
     let cur = radioGroup[i];
@@ -22,7 +40,7 @@ document.getElementById("calc").addEventListener("click",() =>{
     document.getElementById("output").innerHTML = calculator.calc(reader.readStr("stringCalc"));
 });
 
-let textTransform = new transformer();
+let textTransform = new TextTransformer();
 let getParams = () =>{
     let string = reader.readStr("textFormaterStr");
     let naxLength = reader.readPositiveNum("strMaxLength");

@@ -12,6 +12,12 @@
     </header>
     <main>
         <section class="section">
+            <input id="date" value="2011-10-21" />
+            <input id="inputFormat" placeholder="YYYYMMDD" />
+            <input id="outputFormat" placeholder="YYYY-MM-DD" />
+            <button id="formatDate">Format</button>
+        </section>
+        <section class="section">
             <textarea id="textFormaterStr" cols="50" rows="2">It show as work arguments. Arguments are working well!</textarea>
             <label for="strMaxLength">strMaxLength</label>
             <input id="strMaxLength" type="number" value="2"/>
@@ -42,18 +48,6 @@
                 <input type="radio" name="sortType" id="odd" value="odd"/>
             </form>
         </section>
-
-           <!--
-        <section>
-            <input id="date" value="31102011" />
-            <button onclick="DateDisplayFormatter.getEUDate()">DD-MM-YYYY</button>
-            <button onclick="DateDisplayFormatter.getEUDateMs()">DD-MM-YYYY from ms</button>
-            <button onclick="DateDisplayFormatter.getDateFullMonth()">DD-MMName-YYYY</button>
-            <button onclick="DateDisplayFormatter.getDateRegExp()">DD-MM-YYYY, pattern</button>
-            <button onclick="DateDisplayFormatter.getDateRegExpPattern()">DD-MM-YYYY, pattern, patternOut</button>
-        </section>
-        
--->
         <section id="resulcConsole">
             <p id="output"></p>
         </section>

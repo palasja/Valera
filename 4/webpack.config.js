@@ -7,6 +7,7 @@ module.exports = {
     filename: '_bundle.js'
   },
   mode: 'development',
+  watch: true,
   module: {
     rules: [
         // JavaScript
