@@ -69,6 +69,7 @@ INSERT INTO Job (Name, MinEarn) VALUES ('Accountment', '1100')
 INSERT INTO Job (Name, MinEarn) VALUES ('Engineer', '1450')
 
 INSERT INTO Career (JobId, EmployeeId, DepartmentId, Hire, Fire) VALUES (4, 1, 2, '2015-04-01', NULL)
+INSERT INTO Career (JobId, EmployeeId, DepartmentId, Hire, Fire) VALUES (4, 2, 2, '2014-09-04', '2015-08-03')
 INSERT INTO Career (JobId, EmployeeId, DepartmentId, Hire, Fire) VALUES (1, 2, 2, '2015-08-04', NULL)
 INSERT INTO Career (JobId, EmployeeId, DepartmentId, Hire, Fire) VALUES (1, 3, 1, '2014-09-21', '2015-02-28')
 INSERT INTO Career (JobId, EmployeeId, DepartmentId, Hire, Fire) VALUES (3, 4, 3, '2015-01-14', NULL)
@@ -126,22 +127,3 @@ INSERT INTO Salary (EmployeeId, Month, Year, Earn) VALUES (6, 9, 2015, 1965.45)
 INSERT INTO Salary (EmployeeId, Month, Year, Earn) VALUES (6, 10, 2015, 2514.71)
 INSERT INTO Salary (EmployeeId, Month, Year, Earn) VALUES (6, 11, 2015, 2746.19)
 
-Select * FROM Employee AS em; 
-Select Name, MinEarn From Job Where MinEarn <= 1300;
-Select Burthday, FullName From Employee Where Burthday = (
-	Select MIN(Burthday) From Employee
-);
-
-Select FullName From Employee Where Id IN (
-	Select EmployeeId From Salary
-	Where Month = 1 AND YEAR = 2015
-);
-
-Select FullName From Employee Where Id IN (
-	Select EmployeeId From Salary
-	Where Month = 5 AND YEAR = 2015
-);
-
-
-Select Earn From Salary
-	Where Month = 5 AND YEAR = 2015
