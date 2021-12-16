@@ -1,6 +1,6 @@
 USE Organization;
 GO
-/*
+
 Print '1A'
 Select * FROM Employee AS em; 
 
@@ -10,7 +10,7 @@ Select Name, MinEarn From Job Where MinEarn <= 1300;
 Print '1C'
 SELECT AVG(Earn) AS Average
 FROM Salary 
-WHERE Year = 2015 AND Month = 12
+WHERE Year = 2015 AND Month = 10
 
 Print '2A'
 Select Burthday, FullName From Employee Where Burthday = (
@@ -21,7 +21,12 @@ Select FullName From Employee Where Id IN (
 	Select EmployeeId From Salary
 	Where Month = 1 AND YEAR = 2015
 );
-
+Print '2C'
+SELECT S.EmployeeId, S.Earn, S.Month, S.Year FROM 
+(Select EmployeeId, Earn, Month, Year
+From Salary
+Where Month = 5 AND YEAR = 2015) AS tmp, Salary AS S 
+WHERE tmp.EmployeeId = S.EmployeeId AND S.Month < 5 AND tmp.YEAR = 2015 AND tmp.Earn > S.Earn
 Print '2D'
 SELECT Id, Name, (
 SELECT COUNT(*) FROM Career AS C
@@ -48,19 +53,11 @@ SELECT E.FullName, C.JobId, C.DepartmentId, [WorkMonths] = IIF(C.Fire IS NULL, (
 , (SELECT DATEDIFF(mm,C.Hire, C.Fire)))
 FROM Employee AS E JOIN Career AS C ON E.Id = C.EmployeeId
 Print '5A'
-SELECT TOP(10) * FROM Salary
-UPDATE Salary SET Earn = Earn * 1.5
-SELECT TOP(10) * FROM Salary
+SELECT TOP(10) * FROM Job
+UPDATE Job SET MinEarn = MinEarn * 1.5
+SELECT TOP(10) * FROM Job
 
 Print'5B'
-SELECT TOP(20) * FROM Salary
+SELECT * FROM Salary
 DELETE FROM Salary WHERE Year > 2014
-SELECT TOP(20) * FROM Salary
-*/
-
-/*SELECT * FROM Salary WHERE Month = 5 AND YEAR = 2015 AND Earn < ALL(
-Select Earn From Salary
-	Where Month = 5 AND YEAR = 2015
-)
-*/
-
+SELECT * FROM Salary
